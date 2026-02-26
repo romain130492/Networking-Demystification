@@ -2,7 +2,7 @@
 
 Simple hands-on networking projects designed to deeply understand core concepts using **Python** and **Wireshark**.
 
-Related to RSX-102 course, CNAM
+Related to [RSX-102 course, CNAM](https://www.cnam.fr/formation/logiciels-outils-applications-services/technologies-pour-les-applications-en-reseau-contribution-au-profil-netdevops)
 
 Each project focuses on a different layer of the network stack.
 
@@ -39,4 +39,3 @@ A minimal VPN built using a TUN interface to understand:
 * Virtual interfaces
 * Traffic redirection
 
-# Networking-Demystification
