@@ -4,7 +4,6 @@ Simple hands-on networking projects designed to deeply understand core concepts 
 
 Related to [RSX-102 course, CNAM](https://www.cnam.fr/formation/logiciels-outils-applications-services/technologies-pour-les-applications-en-reseau-contribution-au-profil-netdevops)
 
-Each project focuses on a different layer of the network stack.
 
 ## Projects
 
