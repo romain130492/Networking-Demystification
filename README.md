@@ -38,3 +38,21 @@ A minimal VPN built using a TUN interface to understand:
 * Virtual interfaces
 * Traffic redirection
 
+
+
+
+
+
+
+
+
+---------
+
+
+
+
+
+
+ssh root@209.38.139.107 "tcpdump -i any -U -w -" | wireshark -k -i -
+
+https://chatgpt.com/g/g-p-6896efd10a848191adabe5f499dcfeb5-romain-schooling/c/69a00b93-7ae8-8326-94d8-ee884ebca9a5
