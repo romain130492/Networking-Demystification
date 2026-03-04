@@ -2,7 +2,7 @@
 
 Simple hands-on networking projects designed to deeply understand core concepts using **Python** and **Wireshark**.
 
-Related to [RSX-102 course, CNAM](https://www.cnam.fr/formation/logiciels-outils-applications-services/technologies-pour-les-applications-en-reseau-contribution-au-profil-netdevops)
+Related to the [RSX-102 course, CNAM](https://www.cnam.fr/formation/logiciels-outils-applications-services/technologies-pour-les-applications-en-reseau-contribution-au-profil-netdevops)
 
 
 # Projects
