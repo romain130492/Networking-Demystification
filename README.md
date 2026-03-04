@@ -5,7 +5,10 @@ Simple hands-on networking projects designed to deeply understand core concepts 
 Related to [RSX-102 course, CNAM](https://www.cnam.fr/formation/logiciels-outils-applications-services/technologies-pour-les-applications-en-reseau-contribution-au-profil-netdevops)
 
 
-## Projects
+# Projects
+
+
+## 1- Around PROXIES
 
 ### 1. TCP Proxy (Layer 4 – Transport)
 
@@ -42,7 +45,15 @@ A minimal VPN built using a TUN interface to understand:
 
 
 
+## 2- Around HTTP_PROTOCOLES
+### A simple http server from scratch
+* Dummy web server , serving a dummy html for a dummy experimentation
 
+
+## 3- Around  WebSockets
+
+### Project_1 A simple websocket implementation
+* 
 
 
 
@@ -56,3 +67,7 @@ A minimal VPN built using a TUN interface to understand:
 ssh root@209.38.139.107 "tcpdump -i any -U -w -" | wireshark -k -i -
 
 https://chatgpt.com/g/g-p-6896efd10a848191adabe5f499dcfeb5-romain-schooling/c/69a00b93-7ae8-8326-94d8-ee884ebca9a5
+
+
+
+
