@@ -167,6 +167,7 @@ while (True):
   # Construire chemin complet
   full_path = os.path.join(base_dir, safe_path)
   print(connection,'connection TEST HERE')
+  ## We check whether thats a socket connection
   if connection == "Upgrade":
     print('UPGRADE ISNT?')
     try:
@@ -184,7 +185,7 @@ while (True):
     #finally:
       ## conn.close() ## we DO NOT close the connexion. we want to re-use the TCP connection. 
       ## thats the main point of web-socket here
-
+  # Wecheck whether thats a HTTP connection
   elif method_name == "GET" and connection != "Upgrade":
       try:
           with open(full_path, "rb") as f:
