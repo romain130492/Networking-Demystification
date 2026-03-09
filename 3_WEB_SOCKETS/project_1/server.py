@@ -2,6 +2,7 @@
 # tcp.port == 9094 or ip.addr == 180.101.49.44
 # ip.addr==153.3.238.127
 import re
+import select
 import socket
 import os
 import base64
@@ -75,6 +76,25 @@ def decode_websocket_frame(frame):
         "payload_bytes": payload_bytes.hex()
     }
 
+def send_text_message(conn, text):
+    print('gonna send text message')
+    payload = text.encode("utf-8")
+    length = len(payload)
+
+    # FIN=1 + opcode=1 (text)
+    first_byte = 0x81
+
+    if length < 126:
+        header = bytes([first_byte, length])
+    elif length < 65536:
+        header = bytes([first_byte, 126]) + length.to_bytes(2, "big")
+    else:
+        header = bytes([first_byte, 127]) + length.to_bytes(8, "big")
+
+    frame = header + payload
+    conn.sendall(frame)
+    print('sent text message')
+
 def send_pong_response(conn):
     response = b"\x8A\x00"   # FIN=1, Opcode=0xA (PONG), length=0
     print("send pong response")
@@ -82,16 +102,26 @@ def send_pong_response(conn):
 
 
 def handleWebSocketOnGoingConnection(conn):
+    send_interval = 5  # seconds
     while True:
-      send_pong_response(conn)
-      time.sleep(5)
+      # Wait up to send_interval seconds for client data (non-blocking wait)
+      readable, _, _ = select.select([conn], [], [], send_interval)
+      if readable:
+        data = conn.recv(4096)
+        if data:
+          websocket_frame = decode_websocket_frame(data)
+          print(websocket_frame, 'websocket_frame')
+          print(websocket_frame['payload_text'], 'websocket_frame payload_text')
+        else:
+          print('no data received')
+          break  # connection closed
 
-      data = conn.recv(4096)
-      if not data:
-          break
-      websocket_frame = decode_websocket_frame(data)
-      print(websocket_frame, 'websocket_frame')
-      print(websocket_frame['payload_text'], 'websocket_frame payload_text')
+      # Send server messages every loop (either after timeout or after handling client msg)
+      print('gonna send pong response')
+      send_pong_response(conn)
+      print('sent pong response')
+      send_text_message(conn, 'A test from the server')
+
 
       
 def handleWebSocketNewConnection(conn, decoded):
